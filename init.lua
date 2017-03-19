@@ -31,8 +31,8 @@ for i, item in ipairs(dye.dyes) do
 			description = ColorName .. " Glass",
 			drawtype = "glasslike_framed_optional",
 			tiles = {GlassTexture_Stained, GlassDetailTexture},
-			paramtype = "light",
 			use_texture_alpha = true,
+			paramtype = "light",
 			sunlight_propagates = true,
 			is_ground_content = false,
 			groups = {cracky = 3, oddly_breakable_by_hand = 3, [ModName.."_glass"] = 1},
@@ -40,10 +40,10 @@ for i, item in ipairs(dye.dyes) do
 		})
 		xpanes.register_pane(GlassPaneName, {
 			description = ColorName .. " Glass Pane",
-			textures = {GlassTexture, "xpanes_pane_half.png", "xpanes_white.png"},
+			textures = {GlassTexture_Stained, "xpanes_pane_half.png", "xpanes_white.png"},
+			use_texture_alpha = true,
 			inventory_image = GlassTexture,
 			wield_image = GlassTexture,
-			use_texture_alpha = true,
 			sounds = default.node_sound_glass_defaults(),
 			groups = {snappy=2, cracky=3, oddly_breakable_by_hand=3, pane=1, [ModName.."_pane"] = 1},
 			recipe = {
