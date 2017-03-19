@@ -26,7 +26,7 @@ for i, item in ipairs(dye.dyes) do
 		local GlassTexture = "(default_glass.png^[colorize:"..ColorValue..")"
 		local GlassTexture_Stained = (TransparentStain.."^"..GlassTexture)
 		local GlassDetailTexture = (TransparentStain.."^(default_glass_detail.png^[colorize:"..ColorValue..")")
-	
+		
 		minetest.register_node(GlassBlockName, {
 			description = ColorName .. " Glass",
 			drawtype = "glasslike_framed_optional",
@@ -40,7 +40,7 @@ for i, item in ipairs(dye.dyes) do
 		})
 		xpanes.register_pane(GlassPaneName, {
 			description = ColorName .. " Glass Pane",
-			textures = {GlassTexture_Stained, "xpanes_pane_half.png", "xpanes_white.png"},
+			textures = {GlassTexture_Stained, "xpanes_pane_half.png", "xpanes_white.png^[colorize:"..ColorValue},
 			use_texture_alpha = true,
 			inventory_image = GlassTexture,
 			wield_image = GlassTexture,
@@ -67,6 +67,14 @@ for i, item in ipairs(dye.dyes) do
 				{"xpanes:pane_flat", "dye:" .. color, "xpanes:pane_flat"},
 				{"xpanes:pane_flat", "xpanes:pane_flat", "xpanes:pane_flat"},
 			}
+		})
+		
+		-- Temporary patch to support transparent panes.
+		minetest.override_item("xpanes:"..GlassPaneName.."_flat", {
+			use_texture_alpha = true
+		})
+		minetest.override_item("xpanes:"..GlassPaneName, {
+			use_texture_alpha = true
 		})
 	end
 end
