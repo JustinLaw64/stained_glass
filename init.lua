@@ -22,7 +22,7 @@ for i, item in ipairs(dye.dyes) do
 		local GlassBlockName = (ModName..":" .. color .. "_glass")
 		local GlassPaneName = (ModName.."_pane_" .. color)
 		-- Glass textures
-		local TransparentStain = "((stained_glass_white.png^[colorize:"..ColorValue..")^[mask:stained_glass_transparent.png)"
+		local TransparentStain = "(stained_glass_transparent.png^[multiply:"..ColorValue..")"
 		local GlassTexture = "(default_glass.png^[colorize:"..ColorValue..")"
 		local GlassTexture_Stained = (TransparentStain.."^"..GlassTexture)
 		local GlassDetailTexture = (TransparentStain.."^(default_glass_detail.png^[colorize:"..ColorValue..")")
