@@ -22,10 +22,10 @@ for i, item in ipairs(dye.dyes) do
 		local GlassBlockName = (ModName..":" .. color .. "_glass")
 		local GlassPaneName = (ModName.."_pane_" .. color)
 		-- Glass textures
-		local TransparentStain = "(stained_glass_transparent.png^[multiply:"..ColorValue..")"
-		local GlassTexture = "(default_glass.png^[colorize:"..ColorValue..")"
-		local GlassTexture_Stained = (TransparentStain.."^"..GlassTexture)
-		local GlassDetailTexture = (TransparentStain.."^(default_glass_detail.png^[colorize:"..ColorValue..")")
+		local TransparentStain = "stained_glass_transparent.png"
+		local GlassTexture = "default_glass.png"
+		local GlassTexture_Stained = "("..TransparentStain.."^"..GlassTexture..")^[multiply:"..ColorValue
+		local GlassDetailTexture = "("..TransparentStain.."^default_glass_detail.png)^[multiply:"..ColorValue
 		
 		minetest.register_node(GlassBlockName, {
 			description = ColorName .. " Glass",
@@ -40,10 +40,10 @@ for i, item in ipairs(dye.dyes) do
 		})
 		xpanes.register_pane(GlassPaneName, {
 			description = ColorName .. " Glass Pane",
-			textures = {GlassTexture_Stained, "xpanes_pane_half.png", "xpanes_white.png^[colorize:"..ColorValue},
+			textures = {GlassTexture_Stained, "xpanes_pane_half.png", "xpanes_white.png^[multiply:"..ColorValue},
 			use_texture_alpha = true,
-			inventory_image = GlassTexture,
-			wield_image = GlassTexture,
+			inventory_image = GlassTexture_Stained,
+			wield_image = GlassTexture_Stained,
 			sounds = default.node_sound_glass_defaults(),
 			groups = {snappy=2, cracky=3, oddly_breakable_by_hand=3, pane=1, [ModName.."_pane"] = 1},
 			recipe = {
